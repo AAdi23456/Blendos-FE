@@ -12,12 +12,13 @@ function Messages() {
 
   const fetchMessages = async () => {
     try {
-      const userid=17
+      const userid=JSON.parse(localStorage.getItem("user_id"))
+    
       const token = JSON.parse(localStorage.getItem('whatsaptoken'));
       const headers = { token,userid };
 
       const response = await axios.get('http://localhost:8080/messages', { headers,userid });
-      console.log(response);
+     
       setMessages(response.data.messages);
     } catch (error) {
       console.error('Error retrieving messages:', error);
