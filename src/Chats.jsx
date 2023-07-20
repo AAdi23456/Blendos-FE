@@ -33,8 +33,21 @@ const PersonList = () => {
     }
   };
 
-  const handleChatAccess = (toUser, userId) => {
-    localStorage.setItem('user_id',JSON.stringify(userId) );
+  const handleChatAccess = async(toUser, userId) => {
+    localStorage.setItem('user_id',JSON.stringify(userId));
+    try {
+      const res=await fetch("http://localhost:8080/data",{
+        method:"GET",
+        headers:{
+          token:token
+        }
+      })
+      const data=await res.json()
+      localStorage.setItem('senderid',JSON.stringify(data.senderid));
+      localStorage.setItem('sendername',JSON.stringify(data.sendername));
+    } catch (error) {
+      console.log(error);
+    }
     navigate('/messages');
   };
 
