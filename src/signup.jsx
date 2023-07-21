@@ -33,8 +33,19 @@ function Signup() {
   };
 
   return (
-    <div style={{ textAlign: 'center', margin: 'auto', width: '300px' }}>
-      <h1>Signup Page</h1>
+    <div
+      style={{
+        textAlign: 'center',
+        margin: 'auto',
+        width: '300px',
+        padding: '20px',
+        border: '1px solid #ccc',
+        borderRadius: '5px',
+        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+        backgroundColor: '#f9f9f9'
+      }}
+    >
+      <h1 style={{ fontSize: '24px', marginBottom: '20px' }}>Signup Page</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -42,7 +53,7 @@ function Signup() {
           value={Name}
           onChange={handleChange}
           placeholder="Name"
-          style={{ marginBottom: '10px', width: '100%' }}
+          style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '5px', width: '100%', marginBottom: '10px' }}
         />
         <br />
         <input
@@ -51,7 +62,7 @@ function Signup() {
           value={email}
           onChange={handleChange}
           placeholder="Email"
-          style={{ marginBottom: '10px', width: '100%' }}
+          style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '5px', width: '100%', marginBottom: '10px' }}
         />
         <br />
         <input
@@ -60,7 +71,7 @@ function Signup() {
           value={password}
           onChange={handleChange}
           placeholder="Password"
-          style={{ marginBottom: '10px', width: '100%' }}
+          style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '5px', width: '100%', marginBottom: '10px' }}
         />
         <br />
         <input
@@ -69,7 +80,7 @@ function Signup() {
           value={state}
           onChange={handleChange}
           placeholder="State"
-          style={{ marginBottom: '10px', width: '100%' }}
+          style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '5px', width: '100%', marginBottom: '10px' }}
         />
         <br />
         <input
@@ -78,15 +89,27 @@ function Signup() {
           value={country}
           onChange={handleChange}
           placeholder="Country"
-          style={{ marginBottom: '10px', width: '100%' }}
+          style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '5px', width: '100%', marginBottom: '10px' }}
         />
         <br />
-        <button type="submit" style={{ width: '100%' }}>
+        <button
+          type="submit"
+          style={{
+            padding: '10px',
+            border: 'none',
+            borderRadius: '5px',
+            width: '100%',
+            backgroundColor: '#4caf50',
+            color: '#fff',
+            fontSize: '16px',
+            cursor: 'pointer'
+          }}
+        >
           Sign Up
         </button>
       </form>
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
+      <p style={{ fontSize: '14px', marginTop: '10px' }}>
+        Already have an account? <Link to="/login" style={{ color: '#007bff' }}>Login</Link>
       </p>
     </div>
   );

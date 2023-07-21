@@ -81,15 +81,15 @@ function Messages() {
   useEffect(() => {
     fetchMessages();
 
-    // Connect to Socket.io server when the component mounts
-    const socket = socketIOClient('http://localhost:8080', { path:'/messages', transports:["websocket"] });
-//  let fo="hmmmmm"
-//  socket.emit('chatMessage', fo);
+    
+    const socket = socketIOClient('http://localhost:8080', { 
+    transports:["websocket"] });
+
     socket.on('chatMessage', (data) => {
       setMessages((prevMessages) => [...prevMessages, data]);
     });
 
-    // Clean up the socket connection when the component unmounts
+   
     return () => {
       socket.disconnect();
     };
@@ -102,7 +102,7 @@ function Messages() {
       const headers = { token, userid };
 
       const response = await axios.get('http://localhost:8080/oldmessages', { headers });
-      console.log(response);
+     
       setMessages(response.data.messages);
     } catch (error) {
       console.error('Error retrieving messages:', error);
@@ -111,18 +111,18 @@ function Messages() {
 
   const handleSendMessage = () => {
     const sender = sendername;
-   // const senderid=senderid // Replace this with the current user's username
-    const to_user =name; // Replace this with the recipient's username
+ 
+    const to_user =name; 
     const data = { sender, to_user, message: newMessage ,senderid,userid};
-console.log(data);
+
 const socket = socketIOClient('http://localhost:8080', {
-  path:'/messages',
+  
   transports: ['websocket'],
 });
-   // console.log(socket);
+  
     socket.emit('chatMessage', data);
-       console.log(socket.emit('chatMessage', data));
-    // Clear the input field after sending the message
+     
+   
     setNewMessage('');
   };
 
